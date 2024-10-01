@@ -1,8 +1,97 @@
-<html>
-<head> </head>
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(45deg, #ff7b12b, #f06595);
+            color: white;
+            text-align: center;
+        }
+        header {
+            padding: 2rem;
+            background: rgba(0, 0, 0, 0.5);
+        }
+        nav a {
+            color: white;
+            margin: 0 1rem;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        main {
+            padding: 2rem;
+        }
+        .button {
+            display: inline-block;
+            padding: 1rem 2rem;
+            margin: 1rem;
+            background: #235;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background 0.3s;
+        }
+        .button:hover {
+            background: #214;
+        }
+        .quiz-container {
+            background: rgba(0, 0, 0, 0.5);
+            padding: 2rem;
+            border-radius: 10px;
+            display: inline-block;
+            text-align: left;
+        }
+        .quiz-question {
+            margin-bottom: 1rem;
+        }
+        .quiz-answer {
+            display: block;
+            margin: 0.5rem 0;
+        }
+    </style>
+</head>
 <body>
-Das hier ist eine Website
-</img>
-<source>
+    <header>
+        <h1>Willkommen zum Quiz</h1>
+        <nav>
+            
+        </nav>
+    </header>
+    <main>
+        <div class="quiz-container">
+            <div class="quiz-question">
+                <h2>Frage 1: Wieviele Kontinente hat die Erde ?</h2>
+                <label class="quiz-answer"><input type="radio" name="question1" value="falsch"> 5</label>
+                <label class="quiz-answer"><input type="radio" name="question1" value="richtig"> 7</label>
+                <label class="quiz-answer"><input type="radio" name="question1" value="falsch"> 10</label>
+            </div>
+            <div class="quiz-question">
+                <h2>Frage 2: Wie heißt der höchste Berg der Erde ?</h2>
+                <label class="quiz-answer"><input type="radio" name="question2" value="falsch"> Matterhorn</label>
+                <label class="quiz-answer"><input type="radio" name="question2" value="falsch"> Zugspitze</label>
+                <label class="quiz-answer"><input type="radio" name="question2" value="richtig"> Mount Everest</label>
+            </div>
+            <button class="button" onclick="checkAnswers()">Antworten überprüfen</button>
+            <p id="result"></p>
+        </div>
+    </main>
+    <script>
+        function checkAnswers() {
+            let correct = 0;
+            const questions = document.querySelectorAll('.quiz-question');
+            questions.forEach(question => {
+                const selectedAnswer = question.querySelector('input[type="radio"]:checked');
+                if (selectedAnswer && selectedAnswer.value === 'richtig') {
+                    correct++;
+                }
+            });
+            document.getElementById('result').innerText = `Du hast ${correct} von ${questions.length} Fragen richtig beantwortet.`;
+        }
+    </script>
 </body>
 </html>
